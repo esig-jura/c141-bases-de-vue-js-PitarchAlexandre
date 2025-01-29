@@ -19,7 +19,8 @@
         <!-- Rendez ce bouton fonctionnel pour changer la couleur -->
         <v-card-actions>
           <v-btn color="primary" @click="changeIsHighlight">
-            Mettre en surbrillance
+            <p v-if="isHighlighted.value===true">Réinitialiser la couleur</p>
+            <p v-else>Mettre en surbrillance</p>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -39,6 +40,7 @@ const title = "Bienvenue à l'exercice 1";
 const description = "Cet exercice teste le rendu déclaratif et les liaisons d'attributs.";
 const isHighlighted = ref(false);
 const textColor = ref('black');
+
 
 // Change la valeur de isHiglithed apèrs le click
 const changeIsHighlight = () => {
