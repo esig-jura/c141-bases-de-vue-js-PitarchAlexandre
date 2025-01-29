@@ -9,16 +9,16 @@
       <!-- Carte statique à transformer -->
       <v-card class="mx-auto my-6 pa-2" max-width="400">
         <!-- Remplacez *** TITRE *** par un contenu dynamique -->
-        <v-card-title>*** TITRE ***</v-card-title>
+        <v-card-title> {{ title }}</v-card-title>
 
         <!-- Remplacez *** DESCRIPTION *** par un contenu dynamique avec une liaison de style -->
-        <v-card-subtitle style="color: black;">
-          *** DESCRIPTION ***
+        <v-card-subtitle style="{ color: changeColor }">
+          {{ description }}
         </v-card-subtitle>
 
         <!-- Rendez ce bouton fonctionnel pour changer la couleur -->
         <v-card-actions>
-          <v-btn color="primary">
+          <v-btn color="primary" @click="changeIsHighlight">
             Mettre en surbrillance
           </v-btn>
         </v-card-actions>
@@ -30,11 +30,24 @@
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
 import Exercice1Donnee from "@/components/donnees/Exercice1Donnee.vue";
-
+import { ref } from 'vue'
+import { sassFalse } from "sass";
 // Données préparées pour l'exercice
 // SUGGESTION : Pensez à rendre ces données réactives pour qu'elles puissent être mises à jour dynamiquement.
 
 const title = "Bienvenue à l'exercice 1";
 const description = "Cet exercice teste le rendu déclaratif et les liaisons d'attributs.";
-const isHighlighted = false;
+const isHighlighted = ref(false);
+const textColor = ref('black');
+
+// Change la valeur de isHiglithed apèrs le click
+const changeIsHighlight = () => {
+  isHighlighted.value = isHighlighted.value ? false : true
+  console.log(isHighlighted.value)
+}
+const changeColor = () => {
+  textColor.value = isHighlighted.value ? 'blue' : 'black'
+
+}
+
 </script>
