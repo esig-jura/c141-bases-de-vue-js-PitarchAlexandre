@@ -12,7 +12,7 @@
         <v-card-title> {{ title }}</v-card-title>
 
         <!-- Remplacez *** DESCRIPTION *** par un contenu dynamique avec une liaison de style -->
-        <v-card-subtitle style="{ color: changeColor }">
+        <v-card-subtitle :style="{ color:  textColor }">
           {{ description }}
         </v-card-subtitle>
 
@@ -42,12 +42,13 @@ const textColor = ref('black');
 
 // Change la valeur de isHiglithed apèrs le click
 const changeIsHighlight = () => {
-  isHighlighted.value = isHighlighted.value ? false : true
+  isHighlighted.value = !isHighlighted.value
+  textColor.value = isHighlighted.value ? 'blue' : 'black';
   console.log(isHighlighted.value)
+  console.log(textColor.value)
 }
-const changeColor = () => {
-  textColor.value = isHighlighted.value ? 'blue' : 'black'
-
-}
-
 </script>
+
+<style scoped lang="sass">
+
+</style>
