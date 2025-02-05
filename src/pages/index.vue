@@ -18,8 +18,8 @@
 
         <!-- Rendez ce bouton fonctionnel pour changer la couleur -->
         <v-card-actions>
-          <v-btn color="primary" @click="changeIsHighlight">
-            <p v-if="isHighlighted.value===true">Réinitialiser la couleur</p>
+          <v-btn color="primary" @click="changeColor">
+            <p v-if="isHighlighted">Réinitialiser la couleur</p>
             <p v-else>Mettre en surbrillance</p>
           </v-btn>
         </v-card-actions>
@@ -43,7 +43,7 @@ const textColor = ref('black');
 
 
 // Change la valeur de isHiglithed apèrs le click
-const changeIsHighlight = () => {
+const changeColor = () => {
   isHighlighted.value = !isHighlighted.value
   textColor.value = isHighlighted.value ? 'blue' : 'black';
   console.log(isHighlighted.value)
